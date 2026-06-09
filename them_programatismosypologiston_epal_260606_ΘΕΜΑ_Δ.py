@@ -44,33 +44,15 @@ BOOKS = 40
 TITLES = []
 SALES = []
 
-##synolikes_pwliseis = 0
-##for book in range(1, BOOKS+1):
-##    title = input("Τιτλος βιβλίου {}: ".format(book))
-##    TITLES.append(title)
-##    sale = ""
-##    while not sale.isdigit() or int(sale) < 0:
-##        sale = input("Αριθμός πωλήσεων βιβλίου {}: ".format(book))
-##    SALES.append(int(sale))
-##    synolikes_pwliseis += int(sale)
-
-try:
-    print("Ανάγνωση του αρχείου εισόδου...\n")
-    INPUTFILENAME="vivlia.txt"
-    with open(INPUTFILENAME, 'r', encoding="utf-8") as inputfile:
-        synolikes_pwliseis = 0
-        for book in range(1, BOOKS+1):
-            title = inputfile.readline().strip('\n').strip('\ufeff')
-            print("Τιτλος βιβλίου {}: {}".format(book, title))
-            TITLES.append(title)
-            sale = ""
-            while not sale.isdigit() or int(sale) < 0:
-                sale = inputfile.readline().strip('\n').strip('\ufeff')
-                print("Αριθμός πωλήσεων βιβλίου {}: {}".format(book, sale))
-            SALES.append(int(sale))
-            synolikes_pwliseis += int(sale)
-except Exception as err:
-    print("Σφάλμα στην ανάγνωση του αρχείου εισόδου!", err)
+synolikes_pwliseis = 0
+for book in range(1, BOOKS+1):
+    title = input("Τιτλος βιβλίου {}: ".format(book))
+    TITLES.append(title)
+    sale = ""
+    while not sale.isdigit() or int(sale) < 0:
+        sale = input("Αριθμός πωλήσεων βιβλίου {}: ".format(book))
+    SALES.append(int(sale))
+    synolikes_pwliseis += int(sale)
 
 print("Συνολικές πωλήσεις όλων των βιβλίων: {}".format(synolikes_pwliseis))
 print("Μέσος όρος πωλήσεων όλων των βιβλίων: {:.1f}".format(synolikes_pwliseis / BOOKS))
