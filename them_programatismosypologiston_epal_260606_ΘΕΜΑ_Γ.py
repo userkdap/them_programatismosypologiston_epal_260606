@@ -36,62 +36,29 @@ onoma = ""
 diagonizomenoi = 0
 bathm_mikrot = 0
 
-##while onoma != "ΤΕΛΟΣ":
-##    onoma = input("Όνομα διαγωνιζόμενου: ")
-##    if onoma == "ΤΕΛΟΣ":
-##        print("Τερματισμός εισαγωγής δεδομένων")
-##    else:
-##        diagonizomenoi += 1
-##        synolo_bathm = 0
-##        for kritis in range(1, KRITES+1):
-##            bathmologia = ""
-##            while not bathmologia.isdigit() \
-##              or int(bathmologia) not in range(PANW, KATW+1):
-##              bathmologia = input("Βαθμολογία κριτή {}: ".format(kritis))
-##            synolo_bathm += int(bathmologia)
-##        teliki_bathm = synolo_bathm/KRITES
-##        print("Τελική βαθμολογία του {}: {:.2f}".format(onoma, teliki_bathm))
-##        print("Η τελική βαθμολογία του διαγωνιζόμενου είναι ", end="")
-##        if teliki_bathm > 7.00:
-##            print("μεγαλύτερη από 7 μονάδες")
-##            arxeio_exodou = open(ARXEIO_EXODOY, 'a', encoding="utf-8")
-##            arxeio_exodou.write(onoma + "\n")
-##            arxeio_exodou.close()
-##        else:
-##            print("μικρότερη ή ίση από 7 μονάδες")
-##            bathm_mikrot += 1
-
-try:
-    print("Ανάγνωση του αρχείου εισόδου...\n")
-    INPUTFILENAME="diagonizomenoi.txt"
-    with open(INPUTFILENAME, 'r', encoding="utf-8") as inputfile:
-        while onoma != "ΤΕΛΟΣ":
-            onoma = inputfile.readline().strip('\n').strip('\ufeff')
-            print("Όνομα διαγωνιζόμενου: {}".format(onoma))
-            if onoma == "ΤΕΛΟΣ":
-                print("Τερματισμός εισαγωγής δεδομένων")
-            else:
-                diagonizomenoi += 1
-                synolo_bathm = 0
-                for kritis in range(1, KRITES+1):
-                    bathmologia = ""
-                    while not bathmologia.isdigit() \
-                      or int(bathmologia) not in range(PANW, KATW+1):
-                      bathmologia = inputfile.readline().strip('\n').strip('\ufeff')
-                      print("Βαθμολογία κριτή {}: {}".format(kritis, bathmologia))
-                    synolo_bathm += int(bathmologia)
-                teliki_bathm = synolo_bathm/KRITES
-                print("Τελική βαθμολογία του {}: {:.2f}".format(onoma, teliki_bathm))
-                print("Η τελική βαθμολογία του διαγωνιζόμενου είναι ", end="")
-                if teliki_bathm > 7.00:
-                    print("μεγαλύτερη από 7 μονάδες")
-                    arxeio_exodou = open(ARXEIO_EXODOY, 'a', encoding="utf-8")
-                    arxeio_exodou.write(onoma + "\n")
-                    arxeio_exodou.close()
-                else:
-                    print("μικρότερη ή ίση από 7 μονάδες")
-                    bathm_mikrot += 1
-except Exception as err:
-    print("Σφάλμα στην ανάγνωση του αρχείου εισόδου!", err)
+while onoma != "ΤΕΛΟΣ":
+    onoma = input("Όνομα διαγωνιζόμενου: ")
+    if onoma == "ΤΕΛΟΣ":
+        print("Τερματισμός εισαγωγής δεδομένων")
+    else:
+        diagonizomenoi += 1
+        synolo_bathm = 0
+        for kritis in range(1, KRITES+1):
+            bathmologia = ""
+            while not bathmologia.isdigit() \
+              or int(bathmologia) not in range(PANW, KATW+1):
+              bathmologia = input("Βαθμολογία κριτή {}: ".format(kritis))
+            synolo_bathm += int(bathmologia)
+        teliki_bathm = synolo_bathm/KRITES
+        print("Τελική βαθμολογία του {}: {:.2f}".format(onoma, teliki_bathm))
+        print("Η τελική βαθμολογία του διαγωνιζόμενου είναι ", end="")
+        if teliki_bathm > 7.00:
+            print("μεγαλύτερη από 7 μονάδες")
+            arxeio_exodou = open(ARXEIO_EXODOY, 'a', encoding="utf-8")
+            arxeio_exodou.write(onoma + "\n")
+            arxeio_exodou.close()
+        else:
+            print("μικρότερη ή ίση από 7 μονάδες")
+            bathm_mikrot += 1
 
 print("Ποσοστό των διαγωνιζόμενων που η τελική τους βαθμολογία είναι μικρότερη ή ίση από 7 μονάδες: {:.1%} ({}/{})".format(bathm_mikrot / diagonizomenoi, bathm_mikrot, diagonizomenoi))
